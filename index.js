@@ -37,7 +37,8 @@ if (args < 1)
                 (Math.abs(b[0][0] - px[0]) + Math.abs(b[0][1] - px[1]) + Math.abs(b[0][2] - px[2]))
             ));
         demo += `\x1b[48;2;${sorted[0][0].join(';')}m \x1b[0m`;
-        if (text.slice(-sorted[0][1].length, -1) === sorted[0][1].slice(0, -1))
+        const code = text.lastIndexOf('m');
+        if (text.slice(code - sorted[0][1].length +2, code) === sorted[0][1].slice(0, -2))
             text += sorted[0][1].at(-1);
         else
             text += sorted[0][1];
